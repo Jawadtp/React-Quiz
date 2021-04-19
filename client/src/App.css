@@ -1,0 +1,93 @@
+*
+{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.quizcard
+{
+  border: black solid 1px;
+  padding: 10px 10px;
+}
+
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.selected
+{
+  color: white;
+  background: black;
+}
+
+.option
+{
+  padding: 2px 2px;
+  cursor: pointer;
+  display: inline;
+  border: black solid 1px;
+}
+
+.options
+{
+  margin: 10px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.actionBtn
+{
+  display: inline;
+  cursor: pointer;
+  border: 1px black solid;
+  margin: 10px 10px;
+  padding: 3px 3px;
+}
+
+.actionBtn:hover
+{
+  background: black;
+  color: white;
+}
+
+
+.submitBtns
+{
+  float: right;
+  margin: 10px 10px;
+}
+
+.cardheader
+{
+  display: inline;
+}
+
+.headerbtns
+{
+  margin-top: 2px;
+  float: right;
+}
+
+.headerWrapper
+{
+  margin-top: 30px;
+}
+
+.question
+{
+  margin: 20px 5px;
+}
+.timeleft
+{
+  margin: -10px -10px;
+  height: 15px;
+  background: lightgreen;
+  width: 0%;
+ 
+}
