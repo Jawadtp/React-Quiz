@@ -9,11 +9,17 @@ const Quizresult = (props) =>
         if(resp.selected===resp.correct) correct++
         else if(resp.selected!=='') wrong++
     })
+
+    function reset()
+    {
+        console.log('Reset button hit')
+    }
     return (
        <div className="center">
            <h1>Correct: {correct}</h1>
            <h1>Wrong: {wrong}</h1>
            <h1>Total questions: {questionCount}</h1>
+           <button onClick={reset}>Reset</button>
        </div> 
     )
 }
