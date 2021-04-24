@@ -91,3 +91,224 @@
   width: 0%;
  
 }
+
+.loginButton 
+{
+  font-size: 18px;
+  color: white;
+  border: none;
+  padding: 12px 12px;
+  background: #DB4437;
+  border-radius: 8px;
+}
+
+.logoutButton
+{
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  padding: 8px 8px;
+  background: #DB4437;
+  border-radius: 8px;
+  margin: 30px 30px;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  cursor: pointer;
+}
+.logoutButton:hover
+{
+  transform: translate(-1px, -1px);
+  transition: 100ms;
+}
+
+#root
+{
+  margin: 25px 25px;
+}
+
+.addQuizBtn
+{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 20px 20px;
+  border: none;
+  background: #DB4437;
+  color: white;
+  font-size: 40px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  cursor: pointer;
+  
+}
+
+.addQuizBtn:hover
+{
+  transform: translate(-2px, -2px);
+  transition: 100ms;
+}
+
+.addInput
+{
+  width: 100%;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.formWrapper
+{
+  padding: 30px 100px;
+}
+
+.addOptionBtn
+{
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+  border: solid 1px black;
+  background: white ;
+  color: black;
+  border-radius: 100%;
+  margin-right: 10px;
+ 
+}
+
+.addOptionBtn:hover
+{
+  background: black;
+  color: white;
+}
+
+
+
+.optionInputWrapper
+{
+  width: 50%;
+  display: inline;
+}
+
+.optionInput{
+  font-size: 15px;
+  padding: 10px;
+  width: 94%;
+  margin-top: 15px;
+}
+
+.optionText
+{
+  display: inline;
+  font-size: 20px;
+}
+
+.removeOptionWrapper
+{
+  display: inline;
+  
+}
+
+.removeOptionBtn
+{
+  color: red;
+  font-size: 20px;
+  background: none;
+  font-weight: bold;
+  border: none
+}
+
+.removeOptionBtn:hover
+{
+  transform: translate(1px, 1px);
+  color: darkred;
+}
+.addedOption
+{
+  border: 1px dotted black;
+  margin: 10px 0;
+  padding: 3px 3px;
+  width: 100%;
+}
+
+.footerBtns
+{
+  margin: 20px 0;
+}
+
+.footerBtn
+{
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px;
+  border: none;
+  background: none;
+}
+
+.addQuestionBtn
+{
+  border: 1px solid #108de6;
+  color: #108de6;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.addQuestionBtn:hover
+{
+  
+  background: #108de6;
+  color: white;
+}
+.submitQuizBtn
+{
+  margin-left: 30px;
+  border: 1px solid #05e610;
+  color: #05e610;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.submitQuizBtn:hover
+{
+  color: white;
+  background:#05e610 ;
+}
+
+.addedQuestionWrapper
+{
+  margin: 10px 0;
+  border: 1px solid black;
+  padding: 6px 10px;
+}
+
+.removeQuestionBtn
+{
+  cursor: pointer;
+  float:right;
+  border: none;
+  background: none;
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.removeQuestionBtn:hover
+{
+  color: darkred;
+  transform: translate(1px, 1px);
+}
+
+
+@media only screen and (max-width: 600px) 
+{
+  .formWrapper
+  {
+    padding: 30px 30px;
+  }
+  .optionInput
+    {
+      width: 80%;
+    }
+}
+

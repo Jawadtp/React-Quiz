@@ -9,27 +9,40 @@ import Quizresult from './QuizResult'
 let qid=0
 let response=[]
 
+console.log("Here up above the sky")
+
+
 
 const QuizPlayScreen = (props) =>
 {
-
-  const [counter, setCounter] = useState(props.maxtime)
-    const questions=props.questions
+  
+  /*
+  useEffect(() => {
+   let qid=0
+    let response=[]
+  }, []) 
+*/
+  const {questions} = props.location.state.questions
+  
+  const maxtime =  props.location.state.maxtime
+  console.log(maxtime)
+  const [counter, setCounter] = useState(maxtime)
   useEffect(() => 
   {
-    if(!quizOver)
-    {
-      const p = ((props.maxtime-counter)/props.maxtime)*100
+
+    
+    
+      const p = ((maxtime-counter)/maxtime)*100
       document.getElementsByClassName('timeleft')[0].style.width = `${p}%`
       if(counter > 0) 
       {
         setTimeout(() => setCounter(counter - 1), 10);
       }
       else onSubmitClick()
-    }
+   
   }, [counter]);
 
-
+ 
   if(response.length===0) questions.forEach(question => 
   {
     console.log('here')
@@ -81,21 +94,132 @@ const QuizPlayScreen = (props) =>
 
   function onSubmitClick()
   {
-  
-     setQuizOver(true)
+    props.history.push({pathname: '/result', state: {response: {response}}})
+    
   }
 
   
   
 
   return (
-    !quizOver?
-    
+       <Quizcard quest = {question} onOptionClick={onOptionClick} onClearClick ={onClearClick} onNextClick = {onNextClick} onPrevClick ={onPrevClick} onSubmitClick={onSubmitClick} selected={selected} questionCount={questions.length}/> 
       
-      <Quizcard quest = {question} onOptionClick={onOptionClick} onClearClick ={onClearClick} onNextClick = {onNextClick} onPrevClick ={onPrevClick} onSubmitClick={onSubmitClick} selected={selected} questionCount={questions.length}/> 
-    
-    :<Quizresult response={response} test="hello"/>
     )
 }
 
 export default QuizPlayScreen;
+
+
+/*
+import '../App.css'
+import axios from 'axios'
+import {useEffect, useState} from 'react'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+
+import Quizcard from '../components/Quizcard'
+import Quizresult from './QuizResult'
+
+
+let qid = 0
+let response = []
+
+console.log("Here up above the sky")
+
+const QuizPlayScreen = (props) =>
+{
+  //let qid
+  //let response
+  useEffect(() => {
+    qid=0
+    response=[]
+  }, []) 
+
+  const {questions} = props.location.state.questions
+  
+  const maxtime =  props.location.state.maxtime
+  console.log(maxtime)
+  const [counter, setCounter] = useState(maxtime)
+  useEffect(() => 
+  {
+
+    
+    
+      const p = ((maxtime-counter)/maxtime)*100
+      document.getElementsByClassName('timeleft')[0].style.width = `${p}%`
+      if(counter > 0) 
+      {
+        setTimeout(() => setCounter(counter - 1), 10);
+      }
+      else onSubmitClick()
+   
+  }, [counter]);
+
+ 
+  if(response.length===0) questions.forEach(question => 
+  {
+    console.log('here')
+    response.push(
+      {
+        id: question.id,
+        selected: '',
+        correct: question.correct
+      })
+  });
+
+  const [selected, setSelected] = useState(response[qid].selected)
+  const [question, setCurrentQuestion] = useState(questions[0])
+  const [quizOver, setQuizOver] = useState(false)
+
+  function onOptionClick(e)
+  {
+    setSelected(e.target.innerHTML)
+    response[qid].selected=e.target.innerHTML
+    console.log(response[qid].selected)
+    console.log(response[qid].correct)
+    console.log('Current state of response: ')
+    response.forEach((resp) => console.log(resp.selected))
+  }
+
+  function onClearClick()
+  {
+    setSelected('')
+    response[qid].selected=''
+  }
+
+  function onNextClick()
+  {
+    qid++
+    setCurrentQuestion(questions[qid])
+    setSelected(response[qid].selected)
+    console.log('Question id changed to: ' + qid)
+  }
+
+  function onPrevClick()
+  {
+    
+    qid--
+    setCurrentQuestion(questions[qid])
+    setSelected(response[qid].selected)
+    console.log('Question id changed to: ' + qid)
+
+  }
+
+  function onSubmitClick()
+  {
+    props.history.push({pathname: '/result', state: {response: {response}}})
+    
+  }
+
+  
+  
+
+  return (
+       <Quizcard quest = {question} onOptionClick={onOptionClick} onClearClick ={onClearClick} onNextClick = {onNextClick} onPrevClick ={onPrevClick} onSubmitClick={onSubmitClick} selected={selected} questionCount={questions.length}/> 
+      
+    )
+}
+
+export default QuizPlayScreen;
+
+*/
+
