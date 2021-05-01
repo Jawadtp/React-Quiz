@@ -300,6 +300,124 @@
 }
 
 
+.scoreWrapper
+{
+  
+  
+  font-size: 20px;
+  margin-top: -40px;
+  
+}
+
+.scoreDisplay
+{
+  box-shadow: 0 0px 0px 0 rgba(59, 241, 4, 0.2), 0 3px 10px 0 rgba(1, 255, 34, 0.19);
+  width: 100px;
+  
+  padding: 5px 5px;
+  margin: 20px auto;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.scoreValue
+{
+  font-weight: bold;
+}
+
+.scoreStats
+{
+  border-radius: 10px;
+  width: 500px;
+  
+  justify-content: center;
+  display: flex;
+  margin: 10px auto;
+  padding: 10px 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.statBox
+{
+  margin: 10px 30px;
+  
+}
+
+.statValue
+{
+  margin: 10px 20px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 21px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  background: #fa5a4b
+}
+
+.correctCount
+{
+  background: #4bfa7d;
+}
+
+.questionCount
+{
+  background: #f7cf02;
+}
+
+.response
+{
+  margin: 20px auto;
+  max-width: 500px;
+ 
+  
+  
+}
+
+.chosen
+{
+  background: red;
+}
+
+.correct
+{
+  background: greenyellow;
+}
+
+.responseStats
+{
+  margin: 10px 0;
+}
+
+.responseQuestions
+{
+  margin: 50px 0;
+  
+}
+
+.resultBackBtn
+{
+  position: sticky;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 0;
+  border: none;
+  background: transparent;
+  font-size: 40px;
+  font-weight: bold;
+  color: #087bff;
+  top: 0;
+}
+
+.resultBackBtn:hover
+{
+  transform: translate(1px, 1px);
+}
+
 @media only screen and (max-width: 600px) 
 {
   .formWrapper
@@ -310,5 +428,39 @@
     {
       width: 80%;
     }
+    .scoreStats
+    {
+      width: 300px;
+    }
+    .statValue
+    {
+      margin: 10px 10px;
+    }
 }
 
+
+@media only screen and (max-width: 400px) 
+{
+  .scoreStats
+  {
+    width: 270px;
+    
+  }
+  .statBox
+  {
+    margin: 15px 25px;
+  }
+  .statValue
+  {
+    margin: 5px 10px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    
+  }
+}

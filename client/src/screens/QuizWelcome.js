@@ -9,6 +9,7 @@ import {GoogleLogin, GoogleLogout} from 'react-google-login'
 import '../App.css'
 import Login from '../components/Login'
 import Logout from '../components/Logout'
+import QuizWelcomeCard from '../components/QuizWelcomeCard'
 import https from 'https'
 
 const clientId = '329042819432-5pvtu2kl3msh6e12n30b2hldrn5epc6e.apps.googleusercontent.com'
@@ -16,22 +17,26 @@ const clientId = '329042819432-5pvtu2kl3msh6e12n30b2hldrn5epc6e.apps.googleuserc
 const QuizWelcome = (props) => 
 {
     
-
+    
    // const [user, setUser] = useState({"state":"loading"})
     const [user, setUser] = useState({"state":"loading"})
     const [isLoggedIn, setLoggedIn] = useState(false)
+    const [questions, setQuestions] = useState([])
+    const [quizzes, setQuizzes] = useState([])
+
     function onLogin(res)
     {
         setLoggedIn(true)   
-       // setUser(res.profileObj)
+        console.log('onLogin called')
         axios.post('http://localhost:5000/login/', res.profileObj)
         .then(response => 
             {
-                console.log(response.data)
+                console.log('Required thing xd: ' + JSON.stringify(response.data))
                 setUser(response.data)
+
             });
 
-        console.log('Login successful: ' + JSON.stringify(res.profileObj))
+       // console.log('Login successful: ' + JSON.stringify(res.profileObj))
     }
     function onLoginFail(res)
     {
@@ -44,11 +49,7 @@ const QuizWelcome = (props) =>
         console.log('User logged out successfully')
     }
 
-    function startQuiz()
-    {
-        props.history.push({pathname: '/play', state: {maxtime: 500, questions: {questions}}})
-    }
-    const [questions, setQuestions] = useState([])
+    
 
     function onQuizAddClick()
     {
@@ -58,7 +59,7 @@ const QuizWelcome = (props) =>
     {
         axios.get('http://localhost:5000/').then(res => 
         {
-            setQuestions(res.data)
+           setQuizzes(res.data)
         })
     });
 
@@ -70,7 +71,10 @@ const QuizWelcome = (props) =>
         <Login onLogin={onLogin}/>:
         <Logout onLogout={onLogout}/>
         }
-        {questions.length!==0 && isLoggedIn? <button onClick={startQuiz}>Play</button>:''}
+        {user.state!="loading"?quizzes.map((quiz) => 
+        {
+            return <QuizWelcomeCard user={user} quiz={quiz} prop={props}/>
+        }):''}
         {user.isAdmin?<button className="addQuizBtn" onClick={onQuizAddClick}>+</button>:''}
     </>)
 }

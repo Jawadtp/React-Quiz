@@ -13,6 +13,11 @@ const quizSchema = new mongoose.Schema(
         type: String,
         required: true,
     },
+    time:
+    {
+        type: Number,
+        required: true
+    },
     author:
     {
         type: mongoose.Schema.Types.ObjectId,

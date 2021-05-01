@@ -13,6 +13,7 @@ const QuizAdd = (props) => {
     {
             name: '',
             desc: '',
+            time: 20,
             author: props.location.state.user,
             questions: [],
     }) 
@@ -63,6 +64,10 @@ const QuizAdd = (props) => {
         updateCorrectAnswerState(e.target.value)
     }
 
+    function setQuizTime(e)
+    {
+        setQuiz({...quiz, time:parseInt(e.target.value)})
+    }
     function  addQuestionToQuiz ()
     {
         //Validation
@@ -135,8 +140,11 @@ const QuizAdd = (props) => {
         axios.post('http://localhost:5000/add/', quiz)
         .then(response => 
             {
+                console.log(response)
+                alert('Quiz created successfully!')
+                props.history.push({pathname: '/', })
                 
-               console.log(response)
+
             })
 
     }
@@ -152,6 +160,10 @@ const QuizAdd = (props) => {
                         <br/>
                         <div className="quizDescWrapper">
                             <input type="text" className="descInput addInput" placeholder="Quiz description" onChange={setQuizDesc}></input>
+                        </div>
+                        <br/>
+                        <div className="quizTimeWrapper">
+                            <input type="text" className="timeInput addInput" placeholder="Quiz time (in seconds), default value is 20 seconds" onChange={setQuizTime}></input>
                         </div>
                     </div>
                     {quiz.questions.length > 0?<h1>Added Questions</h1>:''}

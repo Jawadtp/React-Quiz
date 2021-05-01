@@ -7,6 +7,7 @@ const { mongoDBURI } = require('./config/keys')
 const mongoose = require('mongoose')
 const User = require('./models/User')
 const Quiz = require('./models/Quiz')
+const Response = require('./models/Response')
 
 app.use(express.json({limit: '10mb', extended: true}))
 app.use(express.urlencoded({limit: '10mb', extended: true}))
@@ -57,7 +58,15 @@ app.get('/', async (req, res) =>
     res.send(questions)
     */
     var quizzes = await Quiz.find()
-    res.send(quizzes[0].questions)
+    //res.send(quizzes[1].questions)
+    res.send(quizzes)
+})
+
+app.get('/attempt', async (req, res) => 
+{
+  
+  const resp = await Response.findOne({quiz: req.query.quizid, user: req.query.userid})
+  res.send(resp)
 })
 
 app.post('/login', async (req, res) => 
@@ -101,11 +110,21 @@ app.post('/add', async (req, res) =>
   ({
     name: quiz.name,
     desc: quiz.desc,
+    time: quiz.time,
     author: quiz.author._id,
     questions: quiz.questions
   })
   await newQuiz.save()
   console.log('Quiz received from client: ' + JSON.stringify(quiz))
+  res.send('Quiz saved in database')
+})
+
+
+app.post('/attempt', async (req, res) => 
+{
+  const newResponse = new Response(req.body)
+  await newResponse.save()
+  res.send('Response added to database')
 })
 
 app.listen(process.env.PORT || 5000, function(){console.log('Server running on PORT 5000')})
